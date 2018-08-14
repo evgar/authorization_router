@@ -1,25 +1,23 @@
-import AUTHORIZATION_PASSED from "../constants";
+import { ADD_ITEM } from '../constants'
+import Auth from '../../Components/Auth'
+
+const auth = new Auth()
 
 const data = {
-  isUserAuthorized: false
-};
+  auth,
+  images: [],
+}
 
 export const itemsActions = (state = data, action) => {
-  console.log("+++");
   switch (action.type) {
-    case "AUTHORIZATION_PASSED":
-      console.log("!!!");
-      console.log(state.isUserAuthorized);
+    case ADD_ITEM:
       return {
         ...state,
-        isUserAuthorized: !state.isUserAuthorized
-      };
-
+        images: [...state.images, action.image],
+      }
     default:
-      return state;
+      return state
   }
+}
 
-  // return state;
-};
-
-export default itemsActions;
+export default itemsActions

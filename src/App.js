@@ -4,26 +4,37 @@ import Profile from "./Components/Profile";
 import News from "./Components/News";
 import Error from "./Components/Error";
 import Navigation from "./Components/Navigation";
-import Authentification from "./Components/Authentification";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Callback from "./Components/Callback";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {connect} from "react-redux";
 
-const App = () => {
-  return (
-    <section className="table-responsive">
-      <Router>
-        <div>
-          <Navigation />
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/profile" component={Profile} />
-            <Route path="/news" component={News} />
-            <Route path="/authentification" component={Authentification} />
-            <Route component={Error} />
-          </Switch>
-        </div>
-      </Router>
-    </section>
-  );
+const App = (props) => {
+	return (
+		<section className="table-responsive">
+			<Router>
+				<div>
+					<Navigation/>
+					<Switch>
+						<Route path="/" exact render={() => {
+							return (
+								props.store.auth.isAuthenticated() ?
+									<News/>
+									:
+									<Home/>
+							)
+						}
+						}/>
+						<Route path="/profile" component={Profile}/>
+						<Route path="/news" component={News}/>
+						<Route path="/callback" component={Callback}/>
+						<Route component={Error}/>
+					</Switch>
+				</div>
+			</Router>
+		</section>
+	);
 };
 
-export default App;
+const mapStateToProps = state => ({store: state});
+
+export default connect(mapStateToProps)(App);

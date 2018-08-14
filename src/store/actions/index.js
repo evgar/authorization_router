@@ -1,5 +1,5 @@
-import { AUTHORIZATION_PASSED } from "../constants";
+import { ADD_ITEM } from '../constants'
 
-export function submitAuthorization() {
-  return { type: AUTHORIZATION_PASSED };
+export function addNewItem(image) {
+  return { type: ADD_ITEM, image }
 }

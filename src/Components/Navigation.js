@@ -1,28 +1,35 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Navigation extends Component {
-  isAuthorized({ isUserAuthorized }) {
-    if (isUserAuthorized) {
-      return "/profile";
-    } else {
-      return "/authentification";
-    }
+
+  handleEvent = e => {
+    e.preventDefault()
+    this.props.store.auth.login()
   }
 
   render() {
     return (
       <div>
-        <NavLink to={this.isAuthorized(this.props.store.isUserAuthorized)}>
-          Profile
-        </NavLink>
-        <NavLink to="/news">News</NavLink>
+        {this.props.store.auth.isAuthenticated() ? (
+          <Fragment>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/">News</NavLink>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <NavLink to="" href="" onClick={e => this.handleEvent(e)}>
+              Profile
+            </NavLink>
+            <NavLink to="/news">News</NavLink>
+          </Fragment>
+        )}
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({ store: state });
+const mapStateToProps = state => ({ store: state })
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps)(Navigation)

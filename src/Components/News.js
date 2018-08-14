@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react'
+import Gallery from './Gallery'
 
 const News = () => {
-  return <div>News</div>;
-};
+  return <Gallery />
+}
 
-export default News;
+export default News
