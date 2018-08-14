@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Unsplash, { toJson } from 'unsplash-js'
 import { connect } from 'react-redux'
-import { addNewItem } from '../store/actions'
+import { addNewItem } from '../../store/actions/index'
 
 const unsplash = new Unsplash({
   applicationId:
@@ -27,12 +27,14 @@ class Gallery extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.store.images.map(image => (
-          <img key={image.id} src={image.urls.small} alt={image.user.name} />
-        ))}
-        <button onClick={this.getPhoto}>Add new image</button>
-      </div>
+      <section className="gallery-wrapper">
+        <button className="gallery-btn btn btn-outline-primary waves-effect" onClick={this.getPhoto}>Add new image</button>
+        <div className="gallery">
+          {this.props.store.images.map((image,id) => (
+            <img key={image.id + id} src={image.urls.small} alt={image.user.name} />
+          ))}
+        </div>
+      </section>
     )
   }
 }

@@ -1,5 +1,5 @@
 import { ADD_ITEM } from '../constants'
-import Auth from '../../Components/Auth'
+import Auth from '../../components/Auth'
 
 const auth = new Auth()
 
