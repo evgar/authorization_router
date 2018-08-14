@@ -28,10 +28,19 @@ class Gallery extends Component {
   render() {
     return (
       <section className="gallery-wrapper">
-        <button className="gallery-btn btn btn-outline-primary waves-effect" onClick={this.getPhoto}>Add new image</button>
+        <button
+          className="gallery-btn btn btn-outline-primary waves-effect"
+          onClick={this.getPhoto}
+        >
+          Add new image
+        </button>
         <div className="gallery">
-          {this.props.store.images.map((image,id) => (
-            <img key={image.id + id} src={image.urls.small} alt={image.user.name} />
+          {this.props.store.images.map((image, id) => (
+            <img
+              key={image.id + id}
+              src={image.urls.small}
+              alt={image.user.name}
+            />
           ))}
         </div>
       </section>

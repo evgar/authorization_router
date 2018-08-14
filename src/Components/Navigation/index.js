@@ -1,19 +1,6 @@
 import React, { Component, Fragment } from 'react'
-// import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {
-  Navbar,
-  NavLink,
-  NavbarBrand,
-  NavbarNav,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'mdbreact'
+import { Navbar, NavLink, NavItem, NavbarNav } from 'mdbreact'
 
 class Navigation extends Component {
   handleEvent = e => {

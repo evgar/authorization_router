@@ -3,10 +3,9 @@ body {
 }
 
 .spinner {
-  background: url("./components/Callback/img/loader.gif") no-repeat center;
+  background: url('./components/Callback/img/loader.gif') no-repeat center;
   width: 400px;
   height: 300px;
-  /*margin: 0 auto;*/
 }
 
 .wrapper {

@@ -3,7 +3,6 @@ import auth0 from 'auth0-js'
 const LOGIN_SUCCESS_PAGE = '/profile'
 
 class Auth {
-
   auth0 = new auth0.WebAuth({
     domain: 'evgar.eu.auth0.com',
     clientID: '2SMSBOKFgoaZwxZe1LSGKKqp8PkwiCpO',
@@ -13,7 +12,7 @@ class Auth {
     scope: 'openid',
   })
 
-  login =() => {
+  login = () => {
     this.auth0.authorize()
   }
 
